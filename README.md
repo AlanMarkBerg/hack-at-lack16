@@ -26,9 +26,9 @@ Note: The raw JISC data can be found here:  https://github.com/jiscdev/learning-
 * Apereo OpenDashBoard - https://github.com/Apereo-Learning-Analytics-Initiative/OpenDashboard
 * Apereo Synthetic data - https://github.com/Apereo-Learning-Analytics-Initiative/LRSLoadTest.git
 
-** OpenSource**
+**OpenSource**
 
-* Learning Locker - ∞	http://docs.learninglocker.net/installation/
+* Learning Locker - http://docs.learninglocker.net/installation/
 * Jmeter - http://jmeter.apache.org/download_jmeter.cgi
 * MongoDB - https://docs.mongodb.org/manual/installation/
 
