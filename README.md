@@ -4,7 +4,14 @@ Evidence hub for LAK16 hackathon
 ## Introduction
 This is the location for the exericises and evidence gathering. 
 
-All material is open via the Apache 2 license.
+All material in the github location should be open via the Apache 2 license.
+
+## Reading Material
+
+If you have time please review before the hackathon
+
+* [The Companion Specification for xAPI Vocabularies](https://adl.gitbooks.io/companion-specification-for-xapi-vocabularies/content/)
+* [The Experience xAPI Vocabulary Primer](https://adl.gitbooks.io/experience-xapi-vocabulary-primer/content/)
 
 ## What is what
 
