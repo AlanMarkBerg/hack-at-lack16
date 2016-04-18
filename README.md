@@ -18,7 +18,8 @@ All material is open via the Apache 2 license.
 ## Useful Links
 
 * JISC support material - https://github.com/jiscdev/learning-analytics
-Note: The raw JISC data can be found here:  https://github.com/jiscdev/learning-analytics/blob/master/xapi-test-set-v2.zip
+  
+    **Note:** The raw JISC data can be found here:  https://github.com/jiscdev/learning-analytics/blob/master/xapi-test-set-v2.zip
 
 **Apereo**
 
