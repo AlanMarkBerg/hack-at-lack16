@@ -13,4 +13,4 @@ info_adl_table<-cbind(info_adl$`activity-types`$prefLabel,info_adl$`activity-typ
 cat("Verbs")
 info_adl_table[,1]
 colnames(info_adl_table)<-c("ActivityType","Description")
-write.table(info_adl_table, file = "activity_types.csv", sep = ",", row.names = FALSE)
+write.table(info_adl_table, file = "activity_typesy.csv", sep = ",", row.names = FALSE)
