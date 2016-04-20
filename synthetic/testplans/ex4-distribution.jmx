@@ -11,17 +11,6 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Distribution" enabled="true">
-        <stringProp name="delimiter">,</stringProp>
-        <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">/Users/Alan/Desktop/Z-lak16/hack-at-lack16/synthetic/data/normal_distribution.csv</stringProp>
-        <boolProp name="quotedData">false</boolProp>
-        <boolProp name="recycle">true</boolProp>
-        <stringProp name="shareMode">shareMode.all</stringProp>
-        <boolProp name="stopThread">false</boolProp>
-        <stringProp name="variableNames">events</stringProp>
-      </CSVDataSet>
-      <hashTree/>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="username" elementType="Argument">
@@ -76,6 +65,26 @@
           </elementProp>
         </collectionProp>
       </Arguments>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Distribution" enabled="true">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="filename">/Users/Alan/Desktop/Z-lak16/hack-at-lack16/synthetic/data/normal_distribution.csv</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">events</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="SessionID (tricky)" enabled="true">
+        <stringProp name="maximumValue">999999999999999999</stringProp>
+        <stringProp name="minimumValue">1</stringProp>
+        <stringProp name="outputFormat"></stringProp>
+        <boolProp name="perThread">true</boolProp>
+        <stringProp name="randomSeed">99</stringProp>
+        <stringProp name="variableName">sessionid</stringProp>
+      </RandomVariableConfig>
       <hashTree/>
       <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="Authentication Hash Processor" enabled="true">
         <boolProp name="resetInterpreter">false</boolProp>
@@ -150,7 +159,7 @@ vars.put(&quot;authHash&quot;, authHash);</stringProp>
           <stringProp name="LoopController.loops">${events}</stringProp>
         </LoopController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get ${events} statements" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get ${events} statements with session id ${sessionid}" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -188,7 +197,7 @@ vars.put(&quot;authHash&quot;, authHash);</stringProp>
       &quot;platform&quot;:&quot;Moodle&quot;,&#xd;
       &quot;extensions&quot;:{  &#xd;
          &quot;http://xapi.jisc.ac.uk/extensions/sessionId&quot;:{  &#xd;
-            &quot;sessionId&quot;:&quot;${__UUID}&quot;&#xd;
+            &quot;sessionId&quot;:&quot;${sessioid}&quot;&#xd;
          },&#xd;
          &quot;http://id.tincanapi.com/extension/ip-address&quot;:{  &#xd;
             &quot;ip-address&quot;:&quot;${__machineIP()}&quot;&#xd;
