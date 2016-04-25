@@ -6,6 +6,10 @@ This is the location for the exericises and evidence gathering.
 
 All material in the github location should be open via the Apache 2 license.
 
+## Team challenges
+Find descriptions and some starting resources here:
+https://docs.google.com/document/d/1X6LJzP4xDKHlZkaqSuqOZzw2HU4q3vaCz-jgLfeotYw/edit?usp=sharing
+
 ## Reading Material
 
 If you have time please review before the hackathon
