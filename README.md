@@ -44,6 +44,9 @@ If you have time please review before the hackathon
 * Jmeter - http://jmeter.apache.org/download_jmeter.cgi
 * MongoDB - https://docs.mongodb.org/manual/installation/
 
+**Other LRSs**
+* Watershed - https://sandbox.watershedlrs.com (see your email for invite)
+
 ## Contact
 
 Feel free to contact Alan, Niall or Kirsty
