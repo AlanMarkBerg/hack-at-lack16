@@ -331,7 +331,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AssignmentSubmitted" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AssignmentSubmitted" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -483,7 +483,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AttemptCompleted" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AttemptCompleted" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -637,7 +637,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AttemptStarted" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AttemptStarted" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -802,7 +802,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - CourseViewed" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - CourseViewed" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -941,7 +941,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - DiscussionViewed" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - DiscussionViewed" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1223,7 +1223,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
         &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
     },&#xd;
     &quot;stored&quot;: &quot;2015-06-17T11:10:07.938000+00:00&quot;,&#xd;
-    &quot;id&quot;: &quot;89cd2edf-e90e-436e-9976-3afbf844bf70&quot;&#xd;
+    &quot;id&quot;: &quot;921c0f8c-6c5f-4de5-9eda-fad6d01f74d7&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1244,7 +1244,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Unlike with previous recipes, changing the entry at category-&gt;definition-&gt;description-&gt;en to &quot;Moodle&quot; (hypothetically for matching category-&gt;definition-&gt;name-&gt;) does not remove the 409 error. Changing all description fields, so as to match respective name fields in a similar way, also doesn&apos;t work.</stringProp>
+          <stringProp name="TestPlan.comments">Old UUID: 89cd2edf-e90e-436e-9976-3afbf844bf70. Unlike with previous recipes, changing the entry at category-&gt;definition-&gt;description-&gt;en to &quot;Moodle&quot; (hypothetically for matching category-&gt;definition-&gt;name-&gt;) does not remove the 409 error. Changing all description fields, so as to match respective name fields in a similar way, also doesn&apos;t work.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -1260,7 +1260,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - ModuleViewed" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - ModuleViewed" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1414,7 +1414,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - QuestionAnswered" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - QuestionAnswered" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1770,7 +1770,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - ScormLaunched" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - ScormLaunched" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1916,7 +1916,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserLoggedin" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserLoggedin" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -2053,7 +2053,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserLoggedout" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserLoggedout" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -2190,7 +2190,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserRegistered" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserRegistered" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">

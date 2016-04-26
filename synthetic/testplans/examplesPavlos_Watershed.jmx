@@ -284,7 +284,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
                             &quot;en&quot;: &quot;Moodle&quot;&#xd;
                         },&#xd;
                         &quot;description&quot;: {&#xd;
-                            &quot;en&quot;: &quot;Moodle&quot;&#xd;
+                            &quot;en&quot;: &quot;Moodle was and is and has not been...&quot;&#xd;
                         },&#xd;
                         &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/source&quot;&#xd;
                     },&#xd;
@@ -360,7 +360,8 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
         &quot;objectType&quot;: &quot;Agent&quot;,
         &quot;name&quot;: &quot;New Client&quot;,
         &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
+    },.en
+Watershed does not seem to have the 409 problem with &quot;context-&gt;category-&gt;definition-&gt;description-&gt;en&quot; having to match &quot;context-&gt;category-&gt;definition-&gt;name-en&quot;.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -602,7 +603,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
                             &quot;en&quot;: &quot;Moodle&quot;&#xd;
                         },&#xd;
                         &quot;description&quot;: {&#xd;
-                            &quot;en&quot;: &quot;Moodle&quot;&#xd;
+                            &quot;en&quot;: &quot;Moodle is and was and has not been...&quot;&#xd;
                         },&#xd;
                         &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/source&quot;&#xd;
                     },&#xd;
@@ -2075,7 +2076,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserRegistered" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - UserRegistered" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
