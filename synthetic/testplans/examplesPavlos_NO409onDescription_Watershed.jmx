@@ -1209,7 +1209,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
                             &quot;en&quot;: &quot;Moodle&quot;&#xd;
                         },&#xd;
                         &quot;description&quot;: {&#xd;
-                            &quot;en&quot;: &quot;Moodle&quot;&#xd;
+                            &quot;en&quot;: &quot;Moodle is and was and has not been...&quot;&#xd;
                         },&#xd;
                         &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/source&quot;&#xd;
                     },&#xd;
