@@ -7,6 +7,7 @@ This is the location for the exericises and evidence gathering.
 All material in the github location should be open via the Apache 2 license.
 
 ## The Edinburgh TBD
+We are trying to move to a commenting model - instead of editing the document directly, please comment on it (rather than editing it directly). We will close editing at midday Thursday 28th - you can sign it in person at the LAK 16 dinner Thursday night!
 https://docs.google.com/document/d/1Fr-RAZ6TaYIAuWBoT1OTITXl30BvUDekb9UyQuLgYdg/edit?usp=sharing
 
 ## Team challenges
