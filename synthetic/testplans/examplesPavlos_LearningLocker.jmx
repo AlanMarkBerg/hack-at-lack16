@@ -27,7 +27,7 @@
           </elementProp>
           <elementProp name="lrsServerUrl" elementType="Argument">
             <stringProp name="Argument.name">lrsServerUrl</stringProp>
-            <stringProp name="Argument.value">sandbox.watershedlrs.com</stringProp>
+            <stringProp name="Argument.value">jisc.learninglocker.net</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Hostname of the LRS server (without http://)</stringProp>
           </elementProp>
@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="lrsBasePath" elementType="Argument">
             <stringProp name="Argument.name">lrsBasePath</stringProp>
-            <stringProp name="Argument.value">/api/organizations/3344/lrs/</stringProp>
+            <stringProp name="Argument.value">/data/xAPI/</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">REST path</stringProp>
           </elementProp>
@@ -97,12 +97,7 @@ vars.put(&quot;authHash&quot;, authHash);</stringProp>
             <stringProp name="Header.name">Authorization</stringProp>
             <stringProp name="Header.value">Basic ${authHash}</stringProp>
           </elementProp>
-          <elementProp name="" elementType="Header">
-            <stringProp name="Header.name">Content-Type</stringProp>
-            <stringProp name="Header.value">application/json</stringProp>
-          </elementProp>
         </collectionProp>
-        <stringProp name="TestPlan.comments">Added &quot;Content-Type: application/json&quot;. Otherwise, the header is &quot;application/x-www-form-urlencoded&quot;.</stringProp>
       </HeaderManager>
       <hashTree/>
       <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
@@ -134,36 +129,148 @@ vars.put(&quot;authHash&quot;, authHash);</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - AssignmentGraded" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AssignmentGraded" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-   &quot;actor&quot;:{&#xd;
-       &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
-       &quot;name&quot;:&quot;Project Tin Can API&quot;,&#xd;
-       &quot;mbox&quot;:&quot;mailto:user@example.com&quot;&#xd;
-   },&#xd;
-   &quot;verb&quot;:{&#xd;
-       &quot;id&quot;:&quot;http://adlnet.gov/expapi/verbs/created&quot;,&#xd;
-       &quot;display&quot;:{&#xd;
-           &quot;en-US&quot;:&quot;created&quot;&#xd;
-       }&#xd;
-   },&#xd;
-   &quot;object&quot;:{&#xd;
-       &quot;id&quot;:&quot;http://example.adlnet.gov/xapi/example/simplestatement&quot;,&#xd;
-       &quot;definition&quot;:{&#xd;
-           &quot;name&quot;:{&#xd;
-               &quot;en-US&quot;:&quot;simple statement&quot;&#xd;
-           },&#xd;
-           &quot;description&quot;:{&#xd;
-               &quot;en-US&quot;:&quot;A simple Experience API statement. Note that the LRS does not need to have any prior information about the Actor (learner), the verb, or the Activity/object.&quot;&#xd;
-           }&#xd;
-       }&#xd;
-   }&#xd;
-}</stringProp>
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;actor&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;learner&quot;,&#xd;
+        &quot;account&quot;: {&#xd;
+            &quot;name&quot;: &quot;3&quot;,&#xd;
+            &quot;homePage&quot;: &quot;http://localhost/moodle&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;verb&quot;: {&#xd;
+        &quot;id&quot;: &quot;http://adlnet.gov/expapi/verbs/scored&quot;,&#xd;
+        &quot;display&quot;: {&#xd;
+            &quot;en&quot;: &quot;recieved grade for&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;result&quot;: {&#xd;
+        &quot;score&quot;: {&#xd;
+            &quot;scaled&quot;: 0.67,&#xd;
+            &quot;raw&quot;: 67,&#xd;
+            &quot;max&quot;: 100&#xd;
+        },&#xd;
+        &quot;success&quot;: true,&#xd;
+        &quot;completion&quot;: true,&#xd;
+        &quot;response&quot;: &quot;Some feedback from the instructor.&quot;&#xd;
+    },&#xd;
+    &quot;context&quot;: {&#xd;
+        &quot;contextActivities&quot;: {&#xd;
+            &quot;parent&quot;: [&#xd;
+                {&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;,&#xd;
+                    &quot;id&quot;: &quot;http://localhost/moodle/course.php?id=2&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;type&quot;: &quot;http://lrs.learninglocker.net/define/type/moodle/course&quot;,&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;My Test Course 1&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;&lt;p&gt;A test course.&lt;/p&gt;&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;grouping&quot;: [&#xd;
+                {&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;,&#xd;
+                    &quot;id&quot;: &quot;http://localhost/moodle&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/site&quot;,&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;My Test Site&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;A test site.&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;category&quot;: [&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;http://moodle.org&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;Moodle&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;Moodle&quot;&#xd;
+                        },&#xd;
+                        &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/source&quot;&#xd;
+                    },&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;&#xd;
+                }&#xd;
+            ]&#xd;
+        },&#xd;
+        &quot;platform&quot;: &quot;Moodle&quot;,&#xd;
+        &quot;instructor&quot;: {&#xd;
+            &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+            &quot;name&quot;: &quot;instructor&quot;,&#xd;
+            &quot;account&quot;: {&#xd;
+                &quot;name&quot;: &quot;2&quot;,&#xd;
+                &quot;homePage&quot;: &quot;http://localhost/moodle&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;extensions&quot;: {&#xd;
+            &quot;http://lrs.learninglocker.net/define/extensions/moodle_logstore_standard_log&quot;: {&#xd;
+                &quot;eventname&quot;: &quot;\\mod_assign\\event\\submission_graded&quot;,&#xd;
+                &quot;component&quot;: &quot;mod_assign&quot;,&#xd;
+                &quot;action&quot;: &quot;graded&quot;,&#xd;
+                &quot;objecttable&quot;: &quot;assign_grades&quot;,&#xd;
+                &quot;objectid&quot;: 6,&#xd;
+                &quot;crud&quot;: &quot;u&quot;,&#xd;
+                &quot;edulevel&quot;: 1,&#xd;
+                &quot;contextid&quot;: 51,&#xd;
+                &quot;contextlevel&quot;: 70,&#xd;
+                &quot;contextinstanceid&quot;: &quot;11&quot;,&#xd;
+                &quot;userid&quot;: &quot;2&quot;,&#xd;
+                &quot;courseid&quot;: &quot;2&quot;,&#xd;
+                &quot;relateduserid&quot;: &quot;2&quot;,&#xd;
+                &quot;other&quot;: &quot;N;&quot;,&#xd;
+                &quot;timecreated&quot;: 1434621423,&#xd;
+                &quot;origin&quot;: &quot;web&quot;,&#xd;
+                &quot;ip&quot;: &quot;127.0.0.1&quot;,&#xd;
+                &quot;object&quot;: &quot;submission&quot;&#xd;
+            },&#xd;
+            &quot;http://lrs.learninglocker.net/define/extensions/info&quot;: {&#xd;
+                &quot;https://moodle.org/&quot;: &quot;1.0.0&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/Moodle-Log-Expander&quot;: &quot;1.0.0&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/Moodle-xAPI-Translator&quot;: &quot;1.0.0&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/xAPI-Recipe-Emitter&quot;: &quot;1.0.0&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;timestamp&quot;: &quot;2015-06-18T10:57:03+01:00&quot;,&#xd;
+    &quot;object&quot;: {&#xd;
+            &quot;objectType&quot;: &quot;Activity&quot;,&#xd;
+            &quot;id&quot;: &quot;http://localhost/moodle/mod/assign/view.php?id=11&quot;,&#xd;
+            &quot;definition&quot;: {&#xd;
+                &quot;type&quot;: &quot;http://lrs.learninglocker.net/define/type/moodle/assign&quot;,&#xd;
+                &quot;name&quot;: {&#xd;
+                    &quot;en&quot;: &quot;My Test Assignment 3&quot;&#xd;
+                },&#xd;
+                &quot;description&quot;: {&#xd;
+                    &quot;en&quot;: &quot;A module&quot;&#xd;
+                }&#xd;
+            }&#xd;
+        &#xd;
+    },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
+    &quot;stored&quot;: &quot;2015-06-18T09:57:04.388200+00:00&quot;,&#xd;
+    &quot;id&quot;: &quot;a8248852-68b4-4206-9006-4848a295cd3e&quot;&#xd;
+}&#xd;
+</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -174,7 +281,7 @@ vars.put(&quot;authHash&quot;, authHash);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -182,7 +289,7 @@ vars.put(&quot;authHash&quot;, authHash);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Extra } at line 126 - Changed &quot;Path: /api/organizations/3344/lrs/statements&quot;</stringProp>
+          <stringProp name="TestPlan.comments">Extra } at line 126</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -224,7 +331,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - AssignmentSubmitted" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AssignmentSubmitted" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -335,6 +442,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-06-18T08:44:05.743700+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;b6b74605-cba8-4b09-a67b-a0ec8b370386&quot;&#xd;
 }</stringProp>
@@ -348,7 +460,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -356,11 +468,6 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Changed &quot;Path: /api/organizations/3344/lrs/statements&quot; - Gives off 403 error, Forbidden -&gt; Removed:     &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -376,7 +483,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - AttemptCompleted" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AttemptCompleted" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -486,6 +593,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
                 &quot;en&quot;: &quot;A module&quot;&#xd;
             }&#xd;
         }&#xd;
+    },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
     },&#xd;
     &quot;stored&quot;: &quot;2015-06-18T08:44:05.743700+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;b6b74605-cba8-4b09-a67b-a0ec8b370386&quot;&#xd;
@@ -501,7 +613,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -509,11 +621,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:    &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
+          <stringProp name="TestPlan.comments">Moodle is an open source learning platform designed to provide educators, administrators and learners with a single robust, secure and integrated system to create personalised learning environments.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -529,7 +637,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - AttemptStarted" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AttemptStarted" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -651,6 +759,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-06-18T08:40:53.641700+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;76744dc1-4758-40ac-bacb-bd27c0c0ec54&quot;&#xd;
 }&#xd;
@@ -665,7 +778,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -673,11 +786,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:    &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
+          <stringProp name="TestPlan.comments">Moodle is an open source learning platform designed to provide educators, administrators and learners with a single robust, secure and integrated system to create personalised learning environments.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -693,7 +802,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - CourseViewed" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - CourseViewed" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -789,6 +898,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-06-17T11:10:07.938000+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;89cd2edf-e90e-436e-9976-3afbf844bf70&quot;&#xd;
 }&#xd;
@@ -803,7 +917,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -811,11 +925,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:     &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
+          <stringProp name="TestPlan.comments">Moodle is an open source learning platform designed to provide educators, administrators and learners with a single robust, secure and integrated system to create personalised learning environments.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -831,7 +941,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - DiscussionViewed" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - DiscussionViewed" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -955,6 +1065,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-07-09T15:12:08.384600+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;a615477b-ed86-4f83-bfb3-8cdf786faf3e&quot;&#xd;
 }&#xd;
@@ -969,7 +1084,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -977,11 +1092,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:     &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
+          <stringProp name="TestPlan.comments">Moodle is an open source learning platform designed to provide educators, administrators and learners with a single robust, secure and integrated system to create personalised learning environments.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -997,7 +1108,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - EnrolmentCreated" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - EnrolmentCreated" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1106,6 +1217,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-06-17T11:10:07.938000+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;89cd2edf-e90e-436e-9976-3afbf844bf70&quot;&#xd;
 }&#xd;
@@ -1120,7 +1236,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1128,11 +1244,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:    &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
+          <stringProp name="TestPlan.comments">Unlike with previous recipes, changing the entry at category-&gt;definition-&gt;description-&gt;en to &quot;Moodle&quot; (hypothetically for matching category-&gt;definition-&gt;name-&gt;) does not remove the 409 error. Changing all description fields, so as to match respective name fields in a similar way, also doesn&apos;t work.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -1148,7 +1260,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - ModuleViewed" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - ModuleViewed" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1259,6 +1371,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-06-17T11:10:17.700500+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;a615477b-ed86-4f83-bfb3-8cdf786faf3e&quot;&#xd;
 }&#xd;
@@ -1273,7 +1390,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1281,11 +1398,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:     &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
+          <stringProp name="TestPlan.comments">As with &quot;EnrollmentCreated&quot;, changing the entry at context-&gt;category-&gt;definition-&gt;description-&gt;en to &quot;Moodle&quot; (hypothetically for matching context-&gt;category-&gt;definition-&gt;name-&gt;en) does not remove the 409 error. Changing all description fields, so as to match respective name fields in a similar way, also doesn&apos;t work.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -1301,7 +1414,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - QuestionAnswered" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - QuestionAnswered" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1551,6 +1664,14 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
     },&#xd;
     &quot;timestamp&quot;: &quot;2016-01-25T17:40:25.000Z&quot;,&#xd;
     &quot;stored&quot;: &quot;2016-01-25T17:40:27.886Z&quot;,&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;name&quot;: &quot;Unnamed Provider&quot;,&#xd;
+        &quot;account&quot;: {&#xd;
+            &quot;homePage&quot;: &quot;https://sandbox.watershedlrs.com&quot;,&#xd;
+            &quot;name&quot;: &quot;W6pryUHJVn8fwU&quot;&#xd;
+        },&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;&#xd;
+    },&#xd;
     &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
     &quot;object&quot;: {&#xd;
         &quot;id&quot;: &quot;http://localhost:8888/moodle/mod/question/question.php?id=5&quot;,&#xd;
@@ -1625,7 +1746,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1633,14 +1754,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:     &quot;authority&quot;: {
-        &quot;name&quot;: &quot;Unnamed Provider&quot;,
-        &quot;account&quot;: {
-            &quot;homePage&quot;: &quot;https://sandbox.watershedlrs.com&quot;,
-            &quot;name&quot;: &quot;W6pryUHJVn8fwU&quot;
-        },
-        &quot;objectType&quot;: &quot;Agent&quot;
-    }</stringProp>
+          <stringProp name="TestPlan.comments">Suprisingly, the mismatch between context-&gt;contextActivities-&gt;category-&gt;definition-&gt;name-&gt;en with ...-&gt;definition-&gt;description-&gt;en did not cause a 409 error.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -1656,7 +1770,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - ScormLaunched" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - ScormLaunched" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1778,7 +1892,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1786,6 +1900,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">No 409 produced. The moodle description is, as with &quot;QuestionAnswered.json&quot; located under context-&gt;contextActivities-&gt;..., so there is a pattern here. When this is the case, no 409 is produced. When the description is located under context-&gt;... a 409 is produced, and can be ammended by changing the decription to &quot;Moodle&quot;. The exceptions to this rule are &quot;EnrolmentCreated.json&quot; and &quot;ModuleViewed.json&quot;, where editing the Moodle description is not enough to remove the 409 error.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -1801,7 +1916,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - UserLoggedin" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserLoggedin" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1896,6 +2011,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-06-17T15:03:24.484500+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;1d5e50a4-4aae-4fb2-9383-5271bccbc8c0&quot;&#xd;
 }&#xd;
@@ -1910,7 +2030,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1918,11 +2038,6 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:     &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -1938,7 +2053,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           </BSFPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Watershed - UserLoggedout" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - UserLoggedout" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -2033,6 +2148,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-06-17T15:02:43.231200+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;de773102-b8bc-4a14-8454-7d426636a6fa&quot;&#xd;
 }&#xd;
@@ -2047,7 +2167,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2055,11 +2175,6 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:    &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -2170,6 +2285,11 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
             }&#xd;
         }&#xd;
     },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
     &quot;stored&quot;: &quot;2015-06-17T15:03:24.484500+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;1d5e50a4-4aae-4fb2-9383-5271bccbc8c0&quot;&#xd;
 }&#xd;
@@ -2184,7 +2304,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/organizations/3344/lrs/statements</stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2192,11 +2312,6 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Removed:    &quot;authority&quot;: {
-        &quot;objectType&quot;: &quot;Agent&quot;,
-        &quot;name&quot;: &quot;New Client&quot;,
-        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;
-    },</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
