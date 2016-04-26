@@ -1211,7 +1211,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
         &quot;definition&quot;: {&#xd;
             &quot;type&quot;: &quot;http://lrs.learninglocker.net/define/type/moodle/course&quot;,&#xd;
             &quot;name&quot;: {&#xd;
-                &quot;en&quot;: &quot;My Test Course&quot;&#xd;
+                &quot;en&quot;: &quot;My Test Course 1&quot;&#xd;
             },&#xd;
             &quot;description&quot;: {&#xd;
                 &quot;en&quot;: &quot;&lt;p&gt;A test course.&lt;/p&gt;&quot;&#xd;
@@ -1225,6 +1225,160 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
     },&#xd;
     &quot;stored&quot;: &quot;2015-06-17T11:10:07.938000+00:00&quot;,&#xd;
     &quot;id&quot;: &quot;89cd2edf-e90e-436e-9976-3afbf844bf70&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Unlike with previous recipes, changing the entry at context-&gt;category-&gt;definition-&gt;description-&gt;en to &quot;Moodle&quot; (hypothetically for matching context-&gt;category-&gt;definition-&gt;name-&gt;en) does not remove the 409 error. Changing all description fields, so as to match respective name fields in a similar way, also doesn&apos;t work.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
+            <intProp name="OnError.action">3</intProp>
+          </ResultAction>
+          <hashTree/>
+          <BSFPostProcessor guiclass="TestBeanGUI" testclass="BSFPostProcessor" testname="Set POSTed Statement ID" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">eval(&apos;var jsonResponse = &apos; + prev.getResponseDataAsString());
+vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
+            <stringProp name="scriptLanguage">javascript</stringProp>
+          </BSFPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - ModuleViewed" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;actor&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;ryansmith&quot;,&#xd;
+        &quot;account&quot;: {&#xd;
+            &quot;name&quot;: &quot;2&quot;,&#xd;
+            &quot;homePage&quot;: &quot;http://localhost/moodle&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;verb&quot;: {&#xd;
+        &quot;id&quot;: &quot;http://id.tincanapi.com/verb/viewed&quot;,&#xd;
+        &quot;display&quot;: {&#xd;
+            &quot;en&quot;: &quot;viewed&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;context&quot;: {&#xd;
+        &quot;contextActivities&quot;: {&#xd;
+            &quot;grouping&quot;: [&#xd;
+                {&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;,&#xd;
+                    &quot;id&quot;: &quot;http://localhost/moodle&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/site&quot;,&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;My Test Site&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;A test site.&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                },&#xd;
+                {&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;,&#xd;
+                    &quot;id&quot;: &quot;http://localhost/moodle/course.php?id=2&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;type&quot;: &quot;http://lrs.learninglocker.net/define/type/moodle/course&quot;,&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;My Test Course 1&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;&lt;p&gt;A test course.&lt;/p&gt;&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;category&quot;: [&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;http://moodle.org&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;Moodle&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;Moodle&quot;&#xd;
+                        },&#xd;
+                        &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/source&quot;&#xd;
+                    },&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;&#xd;
+                }&#xd;
+            ]&#xd;
+        },&#xd;
+        &quot;platform&quot;: &quot;Moodle&quot;,&#xd;
+        &quot;extensions&quot;: {&#xd;
+            &quot;http://lrs.learninglocker.net/define/extensions/moodle_logstore_standard_log&quot;: {&#xd;
+                &quot;eventname&quot;: &quot;\\mod_page\\event\\course_module_viewed&quot;,&#xd;
+                &quot;component&quot;: &quot;mod_page&quot;,&#xd;
+                &quot;action&quot;: &quot;viewed&quot;,&#xd;
+                &quot;objecttable&quot;: &quot;page&quot;,&#xd;
+                &quot;objectid&quot;: &quot;1&quot;,&#xd;
+                &quot;crud&quot;: &quot;r&quot;,&#xd;
+                &quot;edulevel&quot;: 2,&#xd;
+                &quot;contextid&quot;: 30,&#xd;
+                &quot;contextlevel&quot;: 70,&#xd;
+                &quot;contextinstanceid&quot;: &quot;2&quot;,&#xd;
+                &quot;userid&quot;: &quot;2&quot;,&#xd;
+                &quot;courseid&quot;: &quot;2&quot;,&#xd;
+                &quot;other&quot;: &quot;N;&quot;,&#xd;
+                &quot;timecreated&quot;: 1434539416,&#xd;
+                &quot;origin&quot;: &quot;web&quot;,&#xd;
+                &quot;ip&quot;: &quot;127.0.0.1&quot;,&#xd;
+                &quot;object&quot;: &quot;course_module&quot;&#xd;
+            },&#xd;
+            &quot;http://lrs.learninglocker.net/define/extensions/info&quot;: {&#xd;
+                &quot;https://moodle.org/&quot;: &quot;1.0.0&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/Moodle-Log-Expander&quot;: &quot;1.0.0&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/Moodle-xAPI-Translator&quot;: &quot;1.0.0&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/xAPI-Recipe-Emitter&quot;: &quot;1.0.0&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;timestamp&quot;: &quot;2015-06-17T12:10:16+01:00&quot;,&#xd;
+    &quot;object&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Activity&quot;,&#xd;
+        &quot;id&quot;: &quot;http://localhost/moodle/mod/page/view.php?id=2&quot;,&#xd;
+        &quot;definition&quot;: {&#xd;
+            &quot;type&quot;: &quot;http://lrs.learninglocker.net/define/type/moodle/page&quot;,&#xd;
+            &quot;name&quot;: {&#xd;
+                &quot;en&quot;: &quot;My Test Page&quot;&#xd;
+            },&#xd;
+            &quot;description&quot;: {&#xd;
+                &quot;en&quot;: &quot;&lt;p&gt;sdfsdfdfsdf&lt;/p&gt;&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;,&#xd;
+        &quot;name&quot;: &quot;New Client&quot;,&#xd;
+        &quot;mbox&quot;: &quot;mailto:hello@learninglocker.net&quot;&#xd;
+    },&#xd;
+    &quot;stored&quot;: &quot;2015-06-17T11:10:17.700500+00:00&quot;,&#xd;
+    &quot;id&quot;: &quot;a615477b-ed86-4f83-bfb3-8cdf786faf3e&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>

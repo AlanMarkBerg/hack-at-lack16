@@ -129,7 +129,7 @@ vars.put(&quot;authHash&quot;, authHash);</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AssignmentGraded" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - AssignmentGraded" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1211,7 +1211,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
         &quot;definition&quot;: {&#xd;
             &quot;type&quot;: &quot;http://lrs.learninglocker.net/define/type/moodle/course&quot;,&#xd;
             &quot;name&quot;: {&#xd;
-                &quot;en&quot;: &quot;My Test Course&quot;&#xd;
+                &quot;en&quot;: &quot;My Test Course 1&quot;&#xd;
             },&#xd;
             &quot;description&quot;: {&#xd;
                 &quot;en&quot;: &quot;&lt;p&gt;A test course.&lt;/p&gt;&quot;&#xd;
@@ -1245,7 +1245,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Moodle is an open source learning platform designed to provide educators, administrators and learners with a single robust, secure and integrated system to create personalised learning environments.</stringProp>
+          <stringProp name="TestPlan.comments">Unlike with previous recipes, changing the entry at category-&gt;definition-&gt;description-&gt;en to &quot;Moodle&quot; (hypothetically for matching category-&gt;definition-&gt;name-&gt;) does not remove the 409 error. Changing all description fields, so as to match respective name fields in a similar way, also doesn&apos;t work.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
@@ -1295,7 +1295,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
                             &quot;en&quot;: &quot;My Test Site&quot;&#xd;
                         },&#xd;
                         &quot;description&quot;: {&#xd;
-                            &quot;en&quot;: &quot;A test site.&quot;&#xd;
+                            &quot;en&quot;: &quot;My Test Site&quot;&#xd;
                         }&#xd;
                     }&#xd;
                 },&#xd;
@@ -1308,7 +1308,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
                             &quot;en&quot;: &quot;My Test Course 1&quot;&#xd;
                         },&#xd;
                         &quot;description&quot;: {&#xd;
-                            &quot;en&quot;: &quot;&lt;p&gt;A test course.&lt;/p&gt;&quot;&#xd;
+                            &quot;en&quot;: &quot;My Test Course 1&quot;&#xd;
                         }&#xd;
                     }&#xd;
                 }&#xd;
@@ -1368,7 +1368,7 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
                 &quot;en&quot;: &quot;My Test Page&quot;&#xd;
             },&#xd;
             &quot;description&quot;: {&#xd;
-                &quot;en&quot;: &quot;&lt;p&gt;sdfsdfdfsdf&lt;/p&gt;&quot;&#xd;
+                &quot;en&quot;: &quot;My Test Page&quot;&#xd;
             }&#xd;
         }&#xd;
     },&#xd;
@@ -1399,7 +1399,363 @@ vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Moodle is an open source learning platform designed to provide educators, administrators and learners with a single robust, secure and integrated system to create personalised learning environments.</stringProp>
+          <stringProp name="TestPlan.comments">As with &quot;EnrollmentCreated&quot;, changing the entry at context-&gt;category-&gt;definition-&gt;description-&gt;en to &quot;Moodle&quot; (hypothetically for matching context-&gt;category-&gt;definition-&gt;name-&gt;en) does not remove the 409 error. Changing all description fields, so as to match respective name fields in a similar way, also doesn&apos;t work.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
+            <intProp name="OnError.action">3</intProp>
+          </ResultAction>
+          <hashTree/>
+          <BSFPostProcessor guiclass="TestBeanGUI" testclass="BSFPostProcessor" testname="Set POSTed Statement ID" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">eval(&apos;var jsonResponse = &apos; + prev.getResponseDataAsString());
+vars.put(&quot;postedStatementId&quot;, jsonResponse[0]);</stringProp>
+            <stringProp name="scriptLanguage">javascript</stringProp>
+          </BSFPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST LearningLocker - QuestionAnswered" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;id&quot;: &quot;7643c4fa-45e5-415d-a521-b1c0dbc3b46a&quot;,&#xd;
+    &quot;actor&quot;: {&#xd;
+        &quot;name&quot;: &quot;admin&quot;,&#xd;
+        &quot;account&quot;: {&#xd;
+            &quot;homePage&quot;: &quot;http://localhost:8888/moodle&quot;,&#xd;
+            &quot;name&quot;: &quot;2&quot;&#xd;
+        },&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;&#xd;
+    },&#xd;
+    &quot;verb&quot;: {&#xd;
+        &quot;id&quot;: &quot;http://adlnet.gov/expapi/verbs/answered&quot;,&#xd;
+        &quot;display&quot;: {&#xd;
+            &quot;en&quot;: &quot;answered&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;result&quot;: {&#xd;
+        &quot;score&quot;: {&#xd;
+            &quot;scaled&quot;: 1,&#xd;
+            &quot;raw&quot;: 1,&#xd;
+            &quot;min&quot;: 0,&#xd;
+            &quot;max&quot;: 1&#xd;
+        },&#xd;
+        &quot;success&quot;: true,&#xd;
+        &quot;completion&quot;: true,&#xd;
+        &quot;response&quot;: &quot;false&quot;&#xd;
+    },&#xd;
+    &quot;context&quot;: {&#xd;
+        &quot;extensions&quot;: {&#xd;
+            &quot;http://lrs.learninglocker.net/define/extensions/info&quot;: {&#xd;
+                &quot;https://moodle.org/&quot;: &quot;3.0+ (Build: 20151126)&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/Moodle-Log-Expander&quot;: &quot;0.4.2&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/Moodle-xAPI-Translator&quot;: &quot;0.4.1&quot;,&#xd;
+                &quot;https://github.com/LearningLocker/xAPI-Recipe-Emitter&quot;: &quot;0.4.3&quot;&#xd;
+            },&#xd;
+            &quot;http://lrs.learninglocker.net/define/extensions/moodle_logstore_standard_log&quot;: {&#xd;
+                &quot;eventname&quot;: &quot;\\mod_quiz\\event\\attempt_reviewed&quot;,&#xd;
+                &quot;component&quot;: &quot;mod_quiz&quot;,&#xd;
+                &quot;action&quot;: &quot;reviewed&quot;,&#xd;
+                &quot;objecttable&quot;: &quot;quiz_attempts&quot;,&#xd;
+                &quot;objectid&quot;: &quot;107&quot;,&#xd;
+                &quot;crud&quot;: &quot;r&quot;,&#xd;
+                &quot;edulevel&quot;: 1,&#xd;
+                &quot;contextid&quot;: 65,&#xd;
+                &quot;contextlevel&quot;: 70,&#xd;
+                &quot;contextinstanceid&quot;: &quot;23&quot;,&#xd;
+                &quot;userid&quot;: &quot;2&quot;,&#xd;
+                &quot;courseid&quot;: &quot;2&quot;,&#xd;
+                &quot;relateduserid&quot;: &quot;2&quot;,&#xd;
+                &quot;anonymous&quot;: 0,&#xd;
+                &quot;other&quot;: &quot;a:1:{s:6:\&quot;quizid\&quot;;s:1:\&quot;1\&quot;;}&quot;,&#xd;
+                &quot;timecreated&quot;: 1453743625,&#xd;
+                &quot;origin&quot;: &quot;web&quot;,&#xd;
+                &quot;ip&quot;: &quot;0:0:0:0:0:0:0:1&quot;,&#xd;
+                &quot;object&quot;: &quot;attempt&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;contextActivities&quot;: {&#xd;
+            &quot;grouping&quot;: [&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;http://localhost:8888/moodle&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;extensions&quot;: {&#xd;
+                            &quot;http://lrs.learninglocker.net/define/extensions/moodle_course&quot;: {&#xd;
+                                &quot;id&quot;: &quot;1&quot;,&#xd;
+                                &quot;category&quot;: &quot;0&quot;,&#xd;
+                                &quot;sortorder&quot;: &quot;1&quot;,&#xd;
+                                &quot;fullname&quot;: &quot;test&quot;,&#xd;
+                                &quot;shortname&quot;: &quot;test&quot;,&#xd;
+                                &quot;idnumber&quot;: &quot;&quot;,&#xd;
+                                &quot;summary&quot;: &quot;&lt;p&gt;foobar&lt;/p&gt;&quot;,&#xd;
+                                &quot;summaryformat&quot;: &quot;0&quot;,&#xd;
+                                &quot;format&quot;: &quot;site&quot;,&#xd;
+                                &quot;showgrades&quot;: &quot;1&quot;,&#xd;
+                                &quot;newsitems&quot;: &quot;3&quot;,&#xd;
+                                &quot;startdate&quot;: &quot;0&quot;,&#xd;
+                                &quot;marker&quot;: &quot;0&quot;,&#xd;
+                                &quot;maxbytes&quot;: &quot;0&quot;,&#xd;
+                                &quot;legacyfiles&quot;: &quot;0&quot;,&#xd;
+                                &quot;showreports&quot;: &quot;0&quot;,&#xd;
+                                &quot;visible&quot;: &quot;1&quot;,&#xd;
+                                &quot;visibleold&quot;: &quot;1&quot;,&#xd;
+                                &quot;groupmode&quot;: &quot;0&quot;,&#xd;
+                                &quot;groupmodeforce&quot;: &quot;0&quot;,&#xd;
+                                &quot;defaultgroupingid&quot;: &quot;0&quot;,&#xd;
+                                &quot;lang&quot;: &quot;&quot;,&#xd;
+                                &quot;calendartype&quot;: &quot;&quot;,&#xd;
+                                &quot;theme&quot;: &quot;&quot;,&#xd;
+                                &quot;timecreated&quot;: &quot;1419861072&quot;,&#xd;
+                                &quot;timemodified&quot;: &quot;1445596690&quot;,&#xd;
+                                &quot;requested&quot;: &quot;0&quot;,&#xd;
+                                &quot;enablecompletion&quot;: &quot;0&quot;,&#xd;
+                                &quot;completionnotify&quot;: &quot;0&quot;,&#xd;
+                                &quot;cacherev&quot;: &quot;1452773589&quot;,&#xd;
+                                &quot;type&quot;: &quot;site&quot;,&#xd;
+                                &quot;url&quot;: &quot;http://localhost:8888/moodle&quot;&#xd;
+                            }&#xd;
+                        },&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;test&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;foobar&quot;&#xd;
+                        },&#xd;
+                        &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/site&quot;&#xd;
+                    },&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;http://localhost:8888/moodle/course/view.php?id=2&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;extensions&quot;: {&#xd;
+                            &quot;http://lrs.learninglocker.net/define/extensions/moodle_course&quot;: {&#xd;
+                                &quot;id&quot;: &quot;2&quot;,&#xd;
+                                &quot;category&quot;: &quot;1&quot;,&#xd;
+                                &quot;sortorder&quot;: &quot;10001&quot;,&#xd;
+                                &quot;fullname&quot;: &quot;Demo Moodle Course&quot;,&#xd;
+                                &quot;shortname&quot;: &quot;demo&quot;,&#xd;
+                                &quot;idnumber&quot;: &quot;&quot;,&#xd;
+                                &quot;summary&quot;: &quot;&quot;,&#xd;
+                                &quot;summaryformat&quot;: &quot;1&quot;,&#xd;
+                                &quot;format&quot;: &quot;topics&quot;,&#xd;
+                                &quot;showgrades&quot;: &quot;1&quot;,&#xd;
+                                &quot;newsitems&quot;: &quot;5&quot;,&#xd;
+                                &quot;startdate&quot;: &quot;1419894000&quot;,&#xd;
+                                &quot;marker&quot;: &quot;0&quot;,&#xd;
+                                &quot;maxbytes&quot;: &quot;0&quot;,&#xd;
+                                &quot;legacyfiles&quot;: &quot;0&quot;,&#xd;
+                                &quot;showreports&quot;: &quot;0&quot;,&#xd;
+                                &quot;visible&quot;: &quot;1&quot;,&#xd;
+                                &quot;visibleold&quot;: &quot;1&quot;,&#xd;
+                                &quot;groupmode&quot;: &quot;0&quot;,&#xd;
+                                &quot;groupmodeforce&quot;: &quot;0&quot;,&#xd;
+                                &quot;defaultgroupingid&quot;: &quot;0&quot;,&#xd;
+                                &quot;lang&quot;: &quot;&quot;,&#xd;
+                                &quot;calendartype&quot;: &quot;&quot;,&#xd;
+                                &quot;theme&quot;: &quot;&quot;,&#xd;
+                                &quot;timecreated&quot;: &quot;1419863662&quot;,&#xd;
+                                &quot;timemodified&quot;: &quot;1426169572&quot;,&#xd;
+                                &quot;requested&quot;: &quot;0&quot;,&#xd;
+                                &quot;enablecompletion&quot;: &quot;1&quot;,&#xd;
+                                &quot;completionnotify&quot;: &quot;0&quot;,&#xd;
+                                &quot;cacherev&quot;: &quot;1452773589&quot;,&#xd;
+                                &quot;type&quot;: &quot;course&quot;,&#xd;
+                                &quot;url&quot;: &quot;http://localhost:8888/moodle/course/view.php?id=2&quot;&#xd;
+                            }&#xd;
+                        },&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;Demo Moodle Course&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;A Moodle course&quot;&#xd;
+                        },&#xd;
+                        &quot;type&quot;: &quot;http://lrs.learninglocker.net/define/type/moodle/course&quot;&#xd;
+                    },&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;http://localhost:8888/moodle/mod/quiz/attempt.php?attempt=107&quot;,&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;category&quot;: [&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;http://moodle.org&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;Moodle&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;Moodle is a open source learning platform designed to provide educators, administrators and learners with a single robust, secure and integrated system to create personalised learning environments.&quot;&#xd;
+                        },&#xd;
+                        &quot;type&quot;: &quot;http://id.tincanapi.com/activitytype/source&quot;&#xd;
+                    },&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;parent&quot;: [&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;http://localhost:8888/moodle/mod/quiz/view.php?id=23&quot;,&#xd;
+                    &quot;definition&quot;: {&#xd;
+                        &quot;extensions&quot;: {&#xd;
+                            &quot;http://lrs.learninglocker.net/define/extensions/moodle_module&quot;: {&#xd;
+                                &quot;id&quot;: &quot;1&quot;,&#xd;
+                                &quot;course&quot;: &quot;2&quot;,&#xd;
+                                &quot;name&quot;: &quot;test quiz&quot;,&#xd;
+                                &quot;intro&quot;: &quot;&quot;,&#xd;
+                                &quot;introformat&quot;: &quot;1&quot;,&#xd;
+                                &quot;timeopen&quot;: &quot;0&quot;,&#xd;
+                                &quot;timeclose&quot;: &quot;0&quot;,&#xd;
+                                &quot;timelimit&quot;: &quot;0&quot;,&#xd;
+                                &quot;overduehandling&quot;: &quot;autosubmit&quot;,&#xd;
+                                &quot;graceperiod&quot;: &quot;0&quot;,&#xd;
+                                &quot;preferredbehaviour&quot;: &quot;deferredfeedback&quot;,&#xd;
+                                &quot;canredoquestions&quot;: &quot;0&quot;,&#xd;
+                                &quot;attempts&quot;: &quot;0&quot;,&#xd;
+                                &quot;attemptonlast&quot;: &quot;0&quot;,&#xd;
+                                &quot;grademethod&quot;: &quot;1&quot;,&#xd;
+                                &quot;decimalpoints&quot;: &quot;2&quot;,&#xd;
+                                &quot;questiondecimalpoints&quot;: &quot;-1&quot;,&#xd;
+                                &quot;reviewattempt&quot;: &quot;69904&quot;,&#xd;
+                                &quot;reviewcorrectness&quot;: &quot;4368&quot;,&#xd;
+                                &quot;reviewmarks&quot;: &quot;4368&quot;,&#xd;
+                                &quot;reviewspecificfeedback&quot;: &quot;4368&quot;,&#xd;
+                                &quot;reviewgeneralfeedback&quot;: &quot;4368&quot;,&#xd;
+                                &quot;reviewrightanswer&quot;: &quot;4368&quot;,&#xd;
+                                &quot;reviewoverallfeedback&quot;: &quot;4368&quot;,&#xd;
+                                &quot;questionsperpage&quot;: &quot;1&quot;,&#xd;
+                                &quot;navmethod&quot;: &quot;free&quot;,&#xd;
+                                &quot;shuffleanswers&quot;: &quot;1&quot;,&#xd;
+                                &quot;sumgrades&quot;: &quot;2.00000&quot;,&#xd;
+                                &quot;grade&quot;: &quot;5.00000&quot;,&#xd;
+                                &quot;timecreated&quot;: &quot;0&quot;,&#xd;
+                                &quot;timemodified&quot;: &quot;1452599388&quot;,&#xd;
+                                &quot;password&quot;: &quot;&quot;,&#xd;
+                                &quot;subnet&quot;: &quot;&quot;,&#xd;
+                                &quot;browsersecurity&quot;: &quot;-&quot;,&#xd;
+                                &quot;delay1&quot;: &quot;0&quot;,&#xd;
+                                &quot;delay2&quot;: &quot;0&quot;,&#xd;
+                                &quot;showuserpicture&quot;: &quot;0&quot;,&#xd;
+                                &quot;showblocks&quot;: &quot;0&quot;,&#xd;
+                                &quot;completionattemptsexhausted&quot;: &quot;0&quot;,&#xd;
+                                &quot;completionpass&quot;: &quot;0&quot;,&#xd;
+                                &quot;type&quot;: &quot;quiz&quot;,&#xd;
+                                &quot;url&quot;: &quot;http://localhost:8888/moodle/mod/quiz/view.php?id=23&quot;&#xd;
+                            }&#xd;
+                        },&#xd;
+                        &quot;name&quot;: {&#xd;
+                            &quot;en&quot;: &quot;test quiz&quot;&#xd;
+                        },&#xd;
+                        &quot;description&quot;: {&#xd;
+                            &quot;en&quot;: &quot;A module&quot;&#xd;
+                        },&#xd;
+                        &quot;type&quot;: &quot;http://lrs.learninglocker.net/define/type/moodle/quiz&quot;&#xd;
+                    },&#xd;
+                    &quot;objectType&quot;: &quot;Activity&quot;&#xd;
+                }&#xd;
+            ]&#xd;
+        },&#xd;
+        &quot;language&quot;: &quot;en&quot;,&#xd;
+        &quot;platform&quot;: &quot;Moodle&quot;&#xd;
+    },&#xd;
+    &quot;timestamp&quot;: &quot;2016-01-25T17:40:25.000Z&quot;,&#xd;
+    &quot;stored&quot;: &quot;2016-01-25T17:40:27.886Z&quot;,&#xd;
+    &quot;authority&quot;: {&#xd;
+        &quot;name&quot;: &quot;Unnamed Provider&quot;,&#xd;
+        &quot;account&quot;: {&#xd;
+            &quot;homePage&quot;: &quot;https://sandbox.watershedlrs.com&quot;,&#xd;
+            &quot;name&quot;: &quot;W6pryUHJVn8fwU&quot;&#xd;
+        },&#xd;
+        &quot;objectType&quot;: &quot;Agent&quot;&#xd;
+    },&#xd;
+    &quot;version&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;object&quot;: {&#xd;
+        &quot;id&quot;: &quot;http://localhost:8888/moodle/mod/question/question.php?id=5&quot;,&#xd;
+        &quot;definition&quot;: {&#xd;
+            &quot;extensions&quot;: {&#xd;
+                &quot;http://lrs.learninglocker.net/define/extensions/moodle_question&quot;: {&#xd;
+                    &quot;id&quot;: &quot;5&quot;,&#xd;
+                    &quot;category&quot;: &quot;2&quot;,&#xd;
+                    &quot;parent&quot;: &quot;0&quot;,&#xd;
+                    &quot;name&quot;: &quot;is it true?&quot;,&#xd;
+                    &quot;questiontext&quot;: &quot;&lt;p&gt;is it true?&lt;/p&gt;&quot;,&#xd;
+                    &quot;questiontextformat&quot;: &quot;1&quot;,&#xd;
+                    &quot;generalfeedback&quot;: &quot;&quot;,&#xd;
+                    &quot;generalfeedbackformat&quot;: &quot;1&quot;,&#xd;
+                    &quot;defaultmark&quot;: &quot;1.0000000&quot;,&#xd;
+                    &quot;penalty&quot;: &quot;1.0000000&quot;,&#xd;
+                    &quot;qtype&quot;: &quot;truefalse&quot;,&#xd;
+                    &quot;length&quot;: &quot;1&quot;,&#xd;
+                    &quot;stamp&quot;: &quot;localhost:8888+160122173829+hHJEFy&quot;,&#xd;
+                    &quot;version&quot;: &quot;localhost:8888+160122173829+K26fif&quot;,&#xd;
+                    &quot;hidden&quot;: &quot;0&quot;,&#xd;
+                    &quot;timecreated&quot;: &quot;1453484309&quot;,&#xd;
+                    &quot;timemodified&quot;: &quot;1453484309&quot;,&#xd;
+                    &quot;createdby&quot;: &quot;2&quot;,&#xd;
+                    &quot;modifiedby&quot;: &quot;2&quot;,&#xd;
+                    &quot;answers&quot;: {&#xd;
+                        &quot;11&quot;: {&#xd;
+                            &quot;id&quot;: &quot;11&quot;,&#xd;
+                            &quot;question&quot;: &quot;5&quot;,&#xd;
+                            &quot;answer&quot;: &quot;True&quot;,&#xd;
+                            &quot;answerformat&quot;: &quot;0&quot;,&#xd;
+                            &quot;fraction&quot;: &quot;0.0000000&quot;,&#xd;
+                            &quot;feedback&quot;: &quot;&quot;,&#xd;
+                            &quot;feedbackformat&quot;: &quot;1&quot;&#xd;
+                        },&#xd;
+                        &quot;12&quot;: {&#xd;
+                            &quot;id&quot;: &quot;12&quot;,&#xd;
+                            &quot;question&quot;: &quot;5&quot;,&#xd;
+                            &quot;answer&quot;: &quot;False&quot;,&#xd;
+                            &quot;answerformat&quot;: &quot;0&quot;,&#xd;
+                            &quot;fraction&quot;: &quot;1.0000000&quot;,&#xd;
+                            &quot;feedback&quot;: &quot;&quot;,&#xd;
+                            &quot;feedbackformat&quot;: &quot;1&quot;&#xd;
+                        }&#xd;
+                    },&#xd;
+                    &quot;url&quot;: &quot;http://localhost:8888/moodle/mod/question/question.php?id=5&quot;&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;name&quot;: {&#xd;
+                &quot;en&quot;: &quot;is it true?&quot;&#xd;
+            },&#xd;
+            &quot;description&quot;: {&#xd;
+                &quot;en&quot;: &quot;is it true?&quot;&#xd;
+            },&#xd;
+            &quot;type&quot;: &quot;http://adlnet.gov/expapi/activities/cmi.interaction&quot;,&#xd;
+            &quot;interactionType&quot;: &quot;true-false&quot;,&#xd;
+            &quot;correctResponsesPattern&quot;: [&#xd;
+                &quot;false&quot;&#xd;
+            ]&#xd;
+        },&#xd;
+        &quot;objectType&quot;: &quot;Activity&quot;&#xd;
+    }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/data/xAPI/statements</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Suprisingly, the mismatch between context-&gt;contextActivities-&gt;category-&gt;definition-&gt;name-&gt;en with ...-&gt;definition-&gt;description-&gt;en did not cause a 409 error.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <ResultAction guiclass="ResultActionGui" testclass="ResultAction" testname="Result Status Action Handler" enabled="true">
