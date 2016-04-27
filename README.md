@@ -51,6 +51,12 @@ If you have time please review before the hackathon
 **Other LRSs**
 * Watershed - https://sandbox.watershedlrs.com (see your email for invite)
 
+## Evidence
+
+### Moodle Plugin Group
+* [Forks comparision doc](https://docs.google.com/document/d/1ltnf8Yew3SjbbvxkIHCeeeagK6_n-ToH7AJuqVJntTA/edit?usp=sharing)
+* [JISC Recipe Issues list]() - Various teams combined added 23 of these during the hack.
+
 ## Contact
 
 Feel free to contact Alan, Niall or Kirsty
